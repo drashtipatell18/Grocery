@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\VerificationCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +19,11 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
  
+    public function Login()
+    {
+        return view('auth.login');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
