@@ -20602,7 +20602,7 @@ input:focus {
 }
 
 .text-google {
-  color: #dc4a38;
+  color: black;
 }
 
 .text-linkedin {
@@ -20642,7 +20642,7 @@ input:focus {
 }
 
 .bg-google {
-  background: #dc4a38;
+  background: white;
 }
 
 .bg-linkedin {
@@ -21929,7 +21929,7 @@ code {
 .btn, .ajax-upload-dragdrop .ajax-file-upload {
   font-size: 0.875rem;
   line-height: 1;
-  font-family: "ubuntu-bold", sans-serif;
+  /* font-family: "ubuntu-bold", sans-serif; */
   /* Buttons with only icons */
   /* Buttons with icon and text */
 }
@@ -22031,30 +22031,33 @@ code {
 }
 
 .btn-google {
-  background: #dc4a38;
-  color: #ffffff;
+  font-size: 16px;
+  background: white;
+  color: black;
+  border: 1px solid #c2c8d0;
+  border-radius: 6px;
 }
 .btn-google:hover, .btn-google:focus {
-  background: #bf3322;
-  color: #ffffff;
+  background: #E5E5E5;
+  color: black;
 }
 .btn-google.btn-social-icon-text {
   padding: 0 1.5rem 0 0;
-  background: #e47163;
+  background: white;
 }
 .btn-google.btn-social-icon-text i {
-  background: #dc4a38;
+  background: white;
   padding: 0.75rem;
   display: inline-block;
   margin-right: 1.5rem;
 }
 
 .btn-outline-google {
-  border: 1px solid #dc4a38;
-  color: #dc4a38;
+  border: 1px solid white;
+  color: black;
 }
 .btn-outline-google:hover {
-  background: #dc4a38;
+  background: white;
   color: #ffffff;
 }
 

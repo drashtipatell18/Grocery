@@ -24,10 +24,17 @@
                 </div>
                 <a href="#" class="auth-link text-primary">Forgot password?</a>
               </div>
+              {{-- <div class="mb-2 d-grid gap-2">
+                <button type="button" class="btn btn-block btn-google auth-form-btn">
+                  <i class="mdi mdi-google me-2"></i>Sign up with your Google account </button>
+              </div> --}}
               <div class="mb-2 d-grid gap-2">
-                <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                  <i class="mdi mdi-facebook me-2"></i>Connect using facebook </button>
+                <button type="button" class="btn btn-block btn-google auth-form-btn">
+                  <img src="{{ asset('assets/images/google.png') }}" alt="Google Icon" class="me-2 mb-1" style="width: 20px; height: 20px;">
+                  <span style="margin-left: 5px;">Sign up with your Google account</span>
+                </button>
               </div>
+              
               <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="register.html" class="text-primary">Create</a>
               </div>
             </form>

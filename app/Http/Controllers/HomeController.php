@@ -16,9 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['login', 'logout']);
     }
- 
     public function Login()
     {
         return view('auth.login');

@@ -15,19 +15,15 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    if(Auth::user())
-    {
-        return view('dashboard');
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
     }
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-Route::get('/login', [HomeController::class, 'Login'])->name('login');
+Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/loginstore', [HomeController::class, 'loginStore'])->name('loginstore');
-Route::get('/logout',[HomeController::class,'Logout'])->name('logout');
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
