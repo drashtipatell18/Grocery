@@ -19,26 +19,25 @@
             <div class="card-body">
 
                 <h5 class="card-title">
-                    <div class="text-center">{{ isset($subcategory) ? 'Edit Sub Category' : 'Create Sub Category' }}</div>
+                    <div class="text-center">{{ isset($useraddress) ? 'Edit User Address' : 'Create User Address' }}</div>
                 </h5>
 
                 <!-- General Form Elements -->
-                <form action="{{ isset($subcategory) ? '/subcategory/update/' . $subcategory->id : '/subcategory/store' }}" method="POST"
+                <form action="{{ isset($useraddress) ? '/user-address/update/' . $useraddress->id : '/user-address/insert' }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Category Name</label>
+                        <label for="inputText" class="col-sm-2 col-form-label">User Name</label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('category_id') is-invalid @enderror" name="category_id">
-                                <option value="">Select Category</option>
-                                @foreach ($categorys as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ old('category_id', $subcategory->category_id ?? '') == $category->id ? 'selected' : '' }}>
-                                        {{ $category->category_name }}
+                            <select class="form-select @error('user_id') is-invalid @enderror" name="user_id">
+                                <option value="">Select User</option>
+                                @foreach ($users as $id => $name)
+                                    <option value="{{ $id }}" {{ old('user_id', $useraddress->user_id ?? '') == $id ? 'selected' : '' }}>
+                                        {{ $name }}
                                     </option>
                                 @endforeach
                             </select>
-                            @error('category_name')
+                            @error('user_id')
                                 <span class="invalid-feedback" style="color: red">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -46,29 +45,14 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Sub Category Name</label>
+                        <label for="address" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('subcategory_name') is-invalid @enderror"
-                                name="subcategory_name"
-                                value="{{ old('subcategory_name', $subcategory->subcategory_name ?? '') }}">
-                            @error('subcategory_name')
+                            <textarea class="form-control @error('address') is-invalid @enderror" name="address" rows="4">{{ old('address', $useraddress->address ?? '') }}</textarea>
+                            @error('address')
                                 <span class="invalid-feedback" style="color: red">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @if (isset($subcategory) && $subcategory->image)
-                            <img id="oldImage" src="{{ asset('images/' . $subcategory->image) }}" alt="Uploaded Document"
-                                width="100" class="cat_image">
-                            <input type="hidden" class="form-control" name="oldimage" value="{{ $subcategory->image }}">
-                        @endif
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Image</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control" name="image">
                         </div>
                     </div>
 

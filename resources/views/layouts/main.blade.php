@@ -98,6 +98,18 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ route('user') }}">
+                <span class="menu-title">Users</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('useraddress') }}">
+                <span class="menu-title">User Address </span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
                 <span class="menu-title">Icons</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
