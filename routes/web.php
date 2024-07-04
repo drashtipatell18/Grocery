@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesMasterController;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -59,6 +60,14 @@ Route::post('/user/insert',[UserController::class,'userInsert'])->name('insert.u
 Route::get('/user/edit/{id}', [UserController::class, 'userEdit'])->name('edit.user');
 Route::post('/user/update/{id}', [UserController::class, 'userUpdate'])->name('update.user');
 Route::get('/user/destroy/{id}',[UserController::class,'userDestroy'])->name('destroy.user');
+
+// Products
+Route::get('/products', [ProductController::class, 'products'])->name('products');
+Route::get('/product/create',[ProductController::class,'productCreate'])->name('create.product');
+Route::post('/product/insert',[ProductController::class,'productInsert'])->name('insert.product');
+Route::get('/product/edit/{id}', [ProductController::class, 'productEdit'])->name('edit.product');
+Route::post('/product/update/{id}', [ProductController::class, 'productUpdate'])->name('update.product');
+Route::get('/product/destroy/{id}',[ProductController::class,'productDestroy'])->name('destroy.product');
 
 // User Address  
 

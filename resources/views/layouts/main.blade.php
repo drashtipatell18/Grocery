@@ -98,6 +98,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ route('products') }}">
+                <span class="menu-title">Products</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{ route('user') }}">
                 <span class="menu-title">Users</span>
                 <i class="mdi mdi-home menu-icon"></i>

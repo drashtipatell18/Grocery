@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('verification_codes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id'); // Ensure this matches the type of the 'id' column in 'users' table
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('otp');
             $table->timestamp('expire_at')->nullable();
             $table->timestamps();
