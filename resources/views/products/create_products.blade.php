@@ -76,14 +76,19 @@
                             @enderror
                         </div>
                     </div>
-
-
+                    
                     <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Description</label>
+                        <label for="description" class="col-sm-2 col-form-label">Description</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="description" rows="4">{{ old('description', $product->description ?? '') }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="4">{{ old('description', $product->description ?? '') }}</textarea>
+                            @error('description')
+                                <span class="invalid-feedback" style="color: red">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
+
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Price</label>
                         <div class="col-sm-10">

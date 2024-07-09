@@ -128,6 +128,24 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('ratings') }}">
+                <span class="menu-title">Rating</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('carts')}}">
+                <span class="menu-title">Cart</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('wishlists') }}">
+                <span class="menu-title">WishList</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- partial -->
