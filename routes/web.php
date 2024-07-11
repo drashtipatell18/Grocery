@@ -11,6 +11,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SalesMasterController;
+use App\Http\Controllers\SalesDetailsController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
@@ -40,7 +41,7 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashb
 
 // Category
 
-Route::get('/category', [CategoryController::class, 'category'])->name('category');
+Route::get('/categoryinfo', [CategoryController::class, 'category'])->name('categoryinfo');
 Route::get('/category/create', [CategoryController::class, 'createCategory'])->name('category.create');
 Route::post('/category/store', [CategoryController::class, 'storeCategory'])->name('category.store');
 Route::get('/category/edit/{id}', [CategoryController::class, 'categoryEdit'])->name('edit.category');
@@ -58,7 +59,7 @@ Route::get('/subcategory/destroy/{id}',[SubCategoryController::class,'Destroysub
 
 // User 
 
-Route::get('/user', [UserController::class, 'users'])->name('user');
+Route::get('/userinfo', [UserController::class, 'users'])->name('userinfo');
 Route::get('/user/create',[UserController::class,'userCreate'])->name('create.user');
 Route::post('/user/insert',[UserController::class,'userInsert'])->name('insert.user');
 Route::get('/user/edit/{id}', [UserController::class, 'userEdit'])->name('edit.user');
@@ -133,3 +134,12 @@ Route::post('/salesmaster/insert',[SalesMasterController::class,'salesmasterInse
 Route::get('/salesmaster/edit/{id}', [SalesMasterController::class, 'salesmasterEdit'])->name('edit.salesmaster');
 Route::post('/salesmaster/update/{id}', [SalesMasterController::class, 'salesmasterUpdate'])->name('update.salesmaster');
 Route::get('/salesmaster/destroy/{id}',[SalesMasterController::class,'salesmasterDestroy'])->name('destroy.salesmaster');
+
+// SalesDetails 
+
+Route::get('/salesdetail', [SalesDetailsController::class, 'salesdetail'])->name('salesdetail');
+Route::get('/salesdetail/create',[SalesDetailsController::class,'salesdetailCreate'])->name('create.salesdetail');
+Route::post('/salesdetail/insert',[SalesDetailsController::class,'salesdetailInsert'])->name('insert.salesdetail');
+Route::get('/salesdetail/edit/{id}', [SalesDetailsController::class, 'salesdetailEdit'])->name('edit.salesdetail');
+Route::post('/salesdetail/update/{id}', [SalesDetailsController::class, 'salesdetailUpdate'])->name('update.salesdetail');
+Route::get('/salesdetail/destroy/{id}',[SalesDetailsController::class,'salesdetailDestroy'])->name('destroy.salesdetail');

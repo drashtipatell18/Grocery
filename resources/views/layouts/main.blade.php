@@ -80,70 +80,76 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="{{ route('dashboard')}}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('category') }}">
+              <a class="nav-link" href="{{ route('categoryinfo') }}">
                 <span class="menu-title">Category</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-bookmark menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('subcategory') }}">
                 <span class="menu-title">Sub Category</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-bookmark menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('products') }}">
                 <span class="menu-title">Products</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-progress-tag menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('user') }}">
+              <a class="nav-link" href="{{ route('userinfo') }}">
                 <span class="menu-title">Users</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-account-tie menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('useraddress') }}">
                 <span class="menu-title">User Address</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-account-tie menu-icon"></i>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="{{ route('coupon') }}">
                 <span class="menu-title">Coupon</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-ticket-percent menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('salesmaster') }}">
                 <span class="menu-title">Sales Master</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-salesforce menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('salesdetail') }}">
+                <span class="menu-title">Sales Details</span>
+                <i class="mdi mdi-salesforce menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('ratings') }}">
                 <span class="menu-title">Rating</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-star menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('carts')}}">
                 <span class="menu-title">Cart</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-cart menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('wishlists') }}">
                 <span class="menu-title">WishList</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-heart-circle menu-icon"></i>
               </a>
             </li>
           </ul>
