@@ -15,6 +15,7 @@ use App\Http\Controllers\SalesDetailsController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\Auth\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::post('/loginstore', [HomeController::class, 'loginStore'])->name('loginst
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 // Category
 
