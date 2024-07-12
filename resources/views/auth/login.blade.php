@@ -16,7 +16,7 @@
                                     placeholder="Phone & Moblie Number ">
                             </div>
                             <div class="mt-3 d-grid gap-2">
-                                <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"
+                                <a class="btn btn-block btn-gradient-success btn-lg font-weight-medium auth-form-btn"
                                     href="../../index.html">SIGN IN</a>
                             </div>
                             <div class="my-2 d-flex justify-content-between align-items-center">
@@ -24,7 +24,7 @@
                                     <label class="form-check-label text-muted">
                                         <input type="checkbox" class="form-check-input"> Keep me signed in </label>
                                 </div>
-                                <a href="#" class="auth-link text-primary">Forgot password?</a>
+                                <a href="#" class="auth-link text-success">Forgot password?</a>
                             </div>
                             <div class="mb-2 d-grid gap-2">
                                 <a href="{{ url('auth/google') }}" class="btn btn-block btn-google auth-form-btn">
