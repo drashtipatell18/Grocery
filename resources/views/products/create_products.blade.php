@@ -88,6 +88,7 @@
                             @enderror
                         </div>
                     </div>
+                    
 
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Price</label>

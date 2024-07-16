@@ -9,6 +9,13 @@ class CategoryController extends Controller
     public function category()
     {
         $categorys = Category::all();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Category Data successfully',
+            'result' => $categorys
+        ], 200);
+
         return view('category.view_category',compact('categorys'));
     }
     public function createCategory()
@@ -20,6 +27,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $filename = '';
@@ -29,10 +37,18 @@ class CategoryController extends Controller
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $image->move('images', $filename);
         }
-        Category::create([
+
+        $category  = Category::create([
             'category_name' => $request->input('category_name'),
             'image'         => $filename,
         ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Category inserted successfully.',
+            'data' => $category
+        ], 201);
+
         return redirect()->route('category')->with('success', 'Category inserted successfully.');
     }
     
@@ -46,10 +62,14 @@ class CategoryController extends Controller
     public function categoryUpdate(Request $request, $id)
     {
         $request->validate([
-            'category_name' => 'required',
+            'category_name' => 'required|string|max:255',
         ]);
     
         $category = Category::find($id);
+       
+        if (!$category) {
+            return response()->json(['error' => 'Category not found'], 404);
+        }
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -62,13 +82,20 @@ class CategoryController extends Controller
             'category_name' => $request->input('category_name')
         ]);
 
+        return response()->json(['success' => 'Category updated successfully.', 'category' => $category], 200);
+
         return redirect()->route('category')->with('success', 'Category updated successfully.');
     }
     
     public function categoryDestroy($id)
     {
         $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json(['message' => 'Category not found'], 404);
+        }
         $category->delete();
+        return response()->json(['message' => 'Category deleted successfully']);
         return redirect()->route('category')->with('danger', 'Category delete successfully.');
     }
     

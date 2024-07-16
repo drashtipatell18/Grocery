@@ -14,6 +14,7 @@ use App\Http\Controllers\SalesMasterController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\ProductImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,19 @@ Route::post('/product/insert',[ProductController::class,'productInsert'])->name(
 Route::get('/product/edit/{id}', [ProductController::class, 'productEdit'])->name('edit.product');
 Route::post('/product/update/{id}', [ProductController::class, 'productUpdate'])->name('update.product');
 Route::get('/product/destroy/{id}',[ProductController::class,'productDestroy'])->name('destroy.product');
+
+
+// Product Image
+
+Route::get('/productsImage', [ProductImageController::class, 'productsImage'])->name('productsImage');
+Route::get('/productImage/create',[ProductImageController::class,'productCreateImage'])->name('create.productImage');
+Route::post('/productImage/store',[ProductImageController::class,'productInsertImage'])->name('insert.productImage');
+
+Route::get('/productImage/edit/{id}', [ProductImageController::class, 'productsImageEdit'])->name('edit.productImage');
+
+Route::post('/productImage/update/{id}', [ProductImageController::class, 'productsImageUpdate'])->name('update.productImage');
+
+Route::get('/productImage/destroy/{id}',[ProductImageController::class,'productsImageDestroy'])->name('destroy.productImage');
 
 
 // Rating
