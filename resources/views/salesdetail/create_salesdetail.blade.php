@@ -11,7 +11,7 @@
         }
 
         .cat_image {
-        margin-left: 18%;
+            margin-left: 18%;
         }
     </style>
     <div class="col-lg-8 align-content" style="margin-left: auto;margin-right: auto">
@@ -19,25 +19,47 @@
             <div class="card-body">
 
                 <h5 class="card-title">
-                    <div class="text-center">{{ isset($salesmaster) ? 'Edit SalesMaster' : 'Create SalesMaster' }}</div>
+                    <div class="text-center">{{ isset($salesdetail) ? 'Edit Sales Details' : 'Create Sales Details' }}</div>
                 </h5>
                 <!-- General Form Elements -->
-                <form action="{{ isset($salesmaster) ? '/salesmaster/update/' . $salesmaster->id : '/salesmaster/insert' }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ isset($salesdetail) ? '/salesdetail/update/' . $salesdetail->id : '/salesdetail/insert' }}"
+                    method="POST" enctype="multipart/form-data">
                     @csrf
-                    
+
+                    <!-- Blade template -->
                     <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">User Name</label>
+                        <label for="sales_master_id" class="col-sm-2 col-form-label">Sales Master Id</label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('user_id') is-invalid @enderror" name="user_id">
-                                <option value="">Select User</option>
-                                @foreach ($users as $id => $name)
-                                    <option value="{{ $id }}" {{ old('user_id', $salesmaster->user_id ?? '') == $id ? 'selected' : '' }}>
-                                        {{ $name }}
+                            <select class="form-select @error('sales_master_id') is-invalid @enderror" name="sales_master_id" id="sales_master_id">
+                                <option value="">Select Sales Master Id</option>
+                                @foreach ($salesmasters as $salesmaster)
+                                    <option value="{{ $salesmaster }}"
+                                        {{ old('sales_master_id', $salesdetail->sales_master_id ?? '') == $salesmaster ? 'selected' : '' }}>
+                                        {{ $salesmaster }}
                                     </option>
                                 @endforeach
                             </select>
-                            @error('user_id')
+                            @error('sales_master_id')
+                                <span class="invalid-feedback" style="color: red">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                
+                    <div class="row mb-3">
+                        <label for="product_id" class="col-sm-2 col-form-label">Product Name</label>
+                        <div class="col-sm-10">
+                            <select class="form-select @error('product_id') is-invalid @enderror" name="product_id" id="product_id">
+                                <option value="">Select Product</option>
+                                @foreach ($products as $id => $product)
+                                    <option value="{{ $id }}"
+                                        {{ old('product_id', $salesdetail->product_id ?? '') == $id ? 'selected' : '' }}>
+                                        {{ $product }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('product_id')
                                 <span class="invalid-feedback" style="color: red">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -46,17 +68,11 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Coupon Name</label>
+                        <label for="inputText" class="col-sm-2 col-form-label">Quantity</label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('coupon_id') is-invalid @enderror" name="coupon_id">
-                                <option value="">Select Coupon</option>
-                                @foreach ($coupons as $id => $coupon)
-                                    <option value="{{ $id }}" {{ old('coupon_id', $salesmaster->coupon_id ?? '') == $id ? 'selected' : '' }}>
-                                        {{ $coupon }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('coupon_id')
+                            <input type="number" class="form-control @error('quantity') is-invalid @enderror"
+                                name="quantity" value="{{ old('quantity', $salesdetail->quantity ?? '') }}">
+                            @error('quantity')
                                 <span class="invalid-feedback" style="color: red">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -65,17 +81,11 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">User Address Name</label>
+                        <label for="inputText" class="col-sm-2 col-form-label">Amount</label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('user_address_id') is-invalid @enderror" name="user_address_id">
-                                <option value="">Select User Address</option>
-                                @foreach ($useraddress as $id => $useraddres)
-                                    <option value="{{ $id }}" {{ old('user_address_id', $salesmaster->user_address_id ?? '') == $id ? 'selected' : '' }}>
-                                        {{ $useraddres }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('user_address_id')
+                            <input type="number" class="form-control @error('amount') is-invalid @enderror"
+                                name="amount" value="{{ old('amount', $salesdetail->amount ?? '') }}">
+                            @error('amount')
                                 <span class="invalid-feedback" style="color: red">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -87,34 +97,8 @@
                         <label for="inputText" class="col-sm-2 col-form-label">Discount</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control @error('discount') is-invalid @enderror"
-                                name="discount" value="{{ old('discount', $salesmaster->discount ?? '') }}">
+                                name="discount" value="{{ old('discount', $salesdetail->discount ?? '') }}">
                             @error('discount')
-                                <span class="invalid-feedback" style="color: red">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Order Date</label>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control @error('order_date') is-invalid @enderror"
-                                name="order_date" value="{{ old('order_date', $salesmaster->order_date ?? '') }}">
-                            @error('order_date')
-                                <span class="invalid-feedback" style="color: red">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Sub Total</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control @error('sub_total') is-invalid @enderror"
-                                name="sub_total" value="{{ old('sub_total', $salesmaster->sub_total ?? '') }}">
-                            @error('sub_total')
                                 <span class="invalid-feedback" style="color: red">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -126,7 +110,7 @@
                         <label for="inputText" class="col-sm-2 col-form-label">Total Amount</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control @error('total_amount') is-invalid @enderror"
-                                name="total_amount" value="{{ old('total_amount', $salesmaster->total_amount ?? '') }}">
+                                name="total_amount" value="{{ old('total_amount', $salesdetail->total_amount ?? '') }}">
                             @error('total_amount')
                                 <span class="invalid-feedback" style="color: red">
                                     <strong>{{ $message }}</strong>
@@ -138,7 +122,7 @@
                     <div class="row mt-4">
                         <div class="col-sm-10 text-center">
                             <button type="submit" class="btn btn-gradient-success ">
-                                @if (isset($salesmaster))
+                                @if (isset($salesdetail))
                                     Update
                                 @else
                                     Save

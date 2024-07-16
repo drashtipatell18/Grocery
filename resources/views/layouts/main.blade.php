@@ -23,13 +23,24 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
   </head>
+  <style>
+    .sidebar .nav .nav-item.active > .nav-link .menu-title{
+      color: #6ad1a7 !important;
+    }
+    .sidebar .nav .nav-item.active > .nav-link i{
+      color: #6ad1a7 !important;
+    }
+    .navbar .navbar-brand-wrapper .navbar-brand img {
+      height: 50px !important;
+    }
+  </style>
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
+      {{ asset('assets/images/logo.png') }}
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand " href="index.html"><img src="{{ asset('assets/images/logo.png')}}"  alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -40,7 +51,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="assets/images/faces/face1.jpg" alt="image">
+                  <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -65,42 +76,28 @@
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
-            <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
-                <div class="nav-profile-image">
-                  <img src="assets/images/faces/face1.jpg" alt="profile" />
-                  <span class="login-status online"></span>
-                  <!--change to offline or busy as needed-->
-                </div>
-                <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">David Grey. H</span>
-                  <span class="text-secondary text-small">Project Manager</span>
-                </div>
-                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-              </a>
-            </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="{{ route('dashboard')}}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('category') }}">
+              <a class="nav-link" href="{{ route('categoryinfo') }}">
                 <span class="menu-title">Category</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-bookmark menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('subcategory') }}">
                 <span class="menu-title">Sub Category</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-bookmark menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('products') }}">
                 <span class="menu-title">Products</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-progress-tag menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
