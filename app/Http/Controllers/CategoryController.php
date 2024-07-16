@@ -9,13 +9,6 @@ class CategoryController extends Controller
     public function category()
     {
         $categorys = Category::all();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Category Data successfully',
-            'result' => $categorys
-        ], 200);
-
         return view('category.view_category',compact('categorys'));
     }
     public function createCategory()
@@ -42,14 +35,7 @@ class CategoryController extends Controller
             'category_name' => $request->input('category_name'),
             'image'         => $filename,
         ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Category inserted successfully.',
-            'data' => $category
-        ], 201);
-
-        return redirect()->route('category')->with('success', 'Category inserted successfully.');
+        return redirect()->route('categoryinfo')->with('success', 'Category inserted successfully.');
     }
     
     
@@ -81,22 +67,14 @@ class CategoryController extends Controller
         $category->update([
             'category_name' => $request->input('category_name')
         ]);
-
-        return response()->json(['success' => 'Category updated successfully.', 'category' => $category], 200);
-
-        return redirect()->route('category')->with('success', 'Category updated successfully.');
+        return redirect()->route('categoryinfo')->with('success', 'Category updated successfully.');
     }
     
     public function categoryDestroy($id)
     {
         $category = Category::find($id);
-
-        if (!$category) {
-            return response()->json(['message' => 'Category not found'], 404);
-        }
         $category->delete();
-        return response()->json(['message' => 'Category deleted successfully']);
-        return redirect()->route('category')->with('danger', 'Category delete successfully.');
+        return redirect()->route('categoryinfo')->with('danger', 'Category delete successfully.');
     }
     
 }

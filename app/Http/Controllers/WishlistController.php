@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Wishlist;
+use Illuminate\Support\Facades\Validator;
 
 class WishlistController extends Controller
 {
@@ -18,7 +19,7 @@ class WishlistController extends Controller
 
     public function wishlistInsert(Request $request)
     {
-        $request->validate([
+        $validateRequest = Validator::make($request->all(), [
             'user_id' => 'required',
             'product_id' => 'required',
         ]);
@@ -47,7 +48,7 @@ class WishlistController extends Controller
 
     public function wishlistUpdate(Request $request,$id)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'product_id' => 'required',
         ]);

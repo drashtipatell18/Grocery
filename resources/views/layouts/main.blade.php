@@ -126,7 +126,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('user') }}">
+              <a class="nav-link" href="{{ route('userinfo') }}">
                 <span class="menu-title">Users</span>
                 <i class="mdi mdi-account-group menu-icon"></i>
               </a>

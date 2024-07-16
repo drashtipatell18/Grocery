@@ -51,7 +51,7 @@
                         @foreach ($subcategorys as $index => $subcategory)
                             <tr class="">
                                 <td class="text-center">{{ $index + 1 }}</td>
-                                <td class="text-center">{{ $subcategory->category->category_name }}</td>
+                                <td class="text-center"> {{ $subcategory->category ? $subcategory->category->category_name : 'No Category' }}</td>
                                 <td class="text-center">{{ $subcategory->subcategory_name }}</td>
                                 <td class="text-center">
                                     @if ($subcategory->image)

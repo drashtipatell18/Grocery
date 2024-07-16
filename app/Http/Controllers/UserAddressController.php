@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\UserAddress;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class UserAddressController extends Controller
@@ -18,7 +18,7 @@ class UserAddressController extends Controller
         return view('user.create_useraddress',compact('users'));
     }
     public function userAddressInsert(Request $request){
-        $request->validate([
+        $validateRequest = Validator::make($request->all(), [
             'address' => 'required',
         ]);
 

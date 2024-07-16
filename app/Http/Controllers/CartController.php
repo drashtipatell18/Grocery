@@ -25,15 +25,6 @@ class CartController extends Controller
             'product_id' => 'required',
             'quantity' => 'required',
         ]);
-
-        if ($validateRequest->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation error',
-                'errors' => $validateRequest->errors()
-            ], 403);
-        }
-
         $carts = Cart::create([
             'user_id'      => $request->input('user_id'),
             'product_id'     => $request->input('product_id'),
@@ -41,18 +32,12 @@ class CartController extends Controller
         ]);
 
         session()->flash('success', 'Cart added successfully!');
-        return response()->json(['message' => 'Cart Created successfully', 'carts' => $carts], 201);
         return redirect()->route('carts');
     }
 
     public function carts()
     {
         $carts = Cart::all();
-        return response()->json([
-            'success' => true,
-            'message' => 'Users Data successfully',
-            'result' => $carts
-        ], 200);
         return view('carts.view_cart', compact('carts'));
     }
 
@@ -72,21 +57,7 @@ class CartController extends Controller
             'quantity' => 'required',
         ]);
 
-        if ($validateRequest->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation error',
-                'errors' => $validateRequest->errors()
-            ], 403);
-        }
-
         $cart = Cart::find($id);
-
-        if (is_null($cart)) {
-            return response()->json(['message' => 'Cart not found'], 404);
-        }
-
-
         $cart->update([
             'user_id' => $request->input('user_id'),
             'product_id' => $request->input('product_id'),
@@ -94,22 +65,14 @@ class CartController extends Controller
         ]);
 
         session()->flash('success', 'Cart Update successfully!');
-        return response()->json([
-            'message' => 'Cart updated successfully',
-            'cart' => $cart,
-        ], 200);
         return redirect()->route('carts');
     }
 
     public function cartDestroy($id)
     {
         $carts = Cart::find($id);
-        if (!$carts) {
-            return response()->json(['message' => 'Cart not found'], 404);
-        }
         $carts->delete();
         session()->flash('danger', 'Cart Delete successfully!');
-        return response()->json(['message' => 'Cart deleted successfully']);
         return redirect()->back();
     }
 

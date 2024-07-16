@@ -51,11 +51,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                       
                         @foreach ($products as $index => $product)
                             <tr class="">
                                 <td class="text-center">{{ $index + 1 }}</td>
                                 <td class="text-center">{{ $product->name }}</td>
-                                <td class="text-center">{{ $product->category->category_name }}</td>
+                                <td class="text-center">{{ $product->category ? $product->category->category_name : 'No Category' }}</td>
                                 <td class="text-center">{{ $product->subcategory->subcategory_name }}</td>
                                 <td class="text-center">{{ $product->description }}</td>
                                 <td class="text-center">{{ $product->price }}</td>

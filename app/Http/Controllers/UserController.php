@@ -13,12 +13,6 @@ class UserController extends Controller
     public function users()
     {
         $users = User::all();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Users Data successfully',
-            'result' => $users
-        ], 200);
         return view('user.view_user', compact('users'));
     }
     public function userCreate()
@@ -35,16 +29,6 @@ class UserController extends Controller
             'mobile_no' => 'required',
             'password' => 'required',
         ]);
-
-        if ($validateRequest->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation error',
-                'errors' => $validateRequest->errors()
-            ], 403);
-        }
-
-
         $user = User::create([
             'name'      => $request->input('name'),
             'email'     => $request->input('email'),
@@ -54,8 +38,7 @@ class UserController extends Controller
         ]);
 
         session()->flash('success', 'User added successfully!');
-        return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
-        return redirect()->route('user');
+        return redirect()->route('userinfo');
     }
 
     public function userEdit($id)
@@ -73,20 +56,7 @@ class UserController extends Controller
             'mobile_no' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation fails',
-                'error' => $validator->errors()
-            ], 401);
-        }
-
         $users = User::find($id);
-
-        if (is_null($users)) {
-            return response()->json(['message' => 'User not found'], 404);
-        }
-
         $users->update([
             'name'      => $request->input('name'),
             'email'     => $request->input('email'),
@@ -96,22 +66,14 @@ class UserController extends Controller
         ]);
 
         session()->flash('success', 'User Update successfully!');
-        return response()->json([
-            'message' => 'User updated successfully',
-            'user' => $users,
-        ], 200);
-        return redirect()->route('user');
+        return redirect()->route('userinfo');
     }
 
     public function userDestroy($id)
     {
         $user = User::find($id);
-        if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
-        }
         $user->delete();
-        session()->flash('danger', 'User Delete successfully!');
-        return response()->json(['message' => 'User deleted successfully']);
+        session()->flash('danger', 'User Delete successfully!');    
         return redirect()->back();
     }
 
